@@ -1,0 +1,13 @@
+:root {
+  --accent-green: #2BE080;
+  --white: #FFFFFF;
+  --black: #000000;
+  --text-gray: #A0A0A0;
+  --divider-gray: #E8E8E8;
+  --input-bg-gray: #F9F9F9;
+  --accent-red: #EE3465;
+  --header-dark-gray: #5C5C5C;
+  --progress-bar-gray: #F2F2F2;
+  --footer-background-gray: #FAFAFA;
+  --stack-background-gray: #F5F5F5;
+}
