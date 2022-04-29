@@ -1,26 +1,10 @@
-.layout {
-  min-width: 320px;
-  max-width: 1280px;
-  margin: 0 auto;
-  box-sizing: border-box;
-  /*display: grid;*/
-  /*grid-template-rows: min-content 1fr min-content;*/
-  /*grid-template-columns: 70px 1fr 70px;*/
-  /*grid-template-areas:*/
-  /*    ". header ."*/
-  /*    ". main ."*/
-  /*    ". footer .";*/
-}
-
-
-@media screen and (max-width: 1279px) {
-  .layout {
-    grid-template-columns: 30px 1fr 30px;
-  }
-}
-
-@media screen and (max-width: 767px) {
-  .layout {
-    grid-template-columns: 14px 1fr 14px;
-  }
+.page {
+    box-sizing: border-box;
+    display: grid;
+    grid-template:
+        "header" min-content
+        "main" 1fr
+        "footer" min-content
+        / minmax(320px, auto);
+    min-height: 100vh;
 }

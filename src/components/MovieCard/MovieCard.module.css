@@ -1,0 +1,58 @@
+.card__card {
+}
+
+.card__image {
+    display: block;
+    width: 100%;
+    object-fit: cover;
+    object-position: center center;
+}
+
+.card__details {
+    display: flex;
+    justify-content: space-between;
+}
+
+.card__title {
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 16px;
+}
+
+.card__button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+}
+
+.card__buttonIcon > path {
+    transition: .2s all ease-in-out;
+}
+
+.card__buttonIcon_type_delete {
+    display: none;
+}
+
+.card__buttonIcon_type_save {
+
+}
+
+.card__card:hover .card__buttonIcon_type_delete {
+    display: block;
+}
+
+
+.card__buttonIcon_liked > path {
+    fill: var(--accent-red);
+}
+
+.card__duration {
+    margin: 0;
+    padding: 6px 0 0 0;
+    border-top: 1px solid var(--divider-gray);
+    font-weight: 400;
+    font-size: 11px;
+    line-height: 13px;
+    color: var(--text-gray)
+}
