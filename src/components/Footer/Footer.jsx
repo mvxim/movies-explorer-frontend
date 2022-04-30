@@ -1,6 +1,6 @@
-import classNames from 'classnames';
-import React from 'react';
-import styles from './Footer.module.css';
+import classNames from 'classnames'
+import React from 'react'
+import styles from './Footer.module.css'
 
 const Footer = () => {
     return (
@@ -10,21 +10,36 @@ const Footer = () => {
                 <p className={ styles.footer__copyright }>© 2020</p>
                 <ul className={ styles.footer__links }>
                     <li>
-                        <a className={ classNames(styles.footer__link, 'linkAnimation') }>Яндекс.Практикум</a>
+                        <a className={ classNames( styles.footer__link, 'linkAnimation' ) }
+                            href='https://practicum.yandex.ru/'
+                        >
+                            Яндекс.Практикум</a>
                     </li>
                     <li>
-                        <a className={ classNames(styles.footer__link, 'linkAnimation') }>Telegram</a>
+                        <a className={ classNames( styles.footer__link, 'linkAnimation' ) }
+                            href='https://t.me/MVXIM'
+                        >
+                            Telegram
+                        </a>
                     </li>
                     <li>
-                        <a className={ classNames(styles.footer__link, 'linkAnimation') }>Github</a>
+                        <a className={ classNames( styles.footer__link, 'linkAnimation' ) }
+                            href='https://github.com/mvxim'
+                        >
+                            Github
+                        </a>
                     </li>
                     <li>
-                        <a className={ classNames(styles.footer__link, 'linkAnimation') }>Instagram</a>
+                        <a className={ classNames( styles.footer__link, 'linkAnimation' ) }
+                            href='https://instagram.com/mvximixvm'
+                        >
+                            Instagram
+                        </a>
                     </li>
                 </ul>
             </div>
         </section>
-    );
-};
+    )
+}
 
-export default Footer;
+export default Footer

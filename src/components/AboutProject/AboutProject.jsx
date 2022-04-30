@@ -1,12 +1,12 @@
-import classNames from 'classnames';
-import React from 'react';
-import SectionTitle from '../SectionTitle/SectionTitle';
-import styles from './AboutProject.module.css';
+import classNames from 'classnames'
+import React from 'react'
+import SectionTitle from '../SectionTitle/SectionTitle'
+import styles from './AboutProject.module.css'
 
 const AboutProject = () => {
     return (
-        <section className={ styles.about }>
-            <SectionTitle styleProps={styles.about__title}>
+        <section className={ styles.about } id="about">
+            <SectionTitle styleProps={ styles.about__title }>
                 О проекте
             </SectionTitle>
             <article className={ styles.about__details }>
@@ -14,7 +14,7 @@ const AboutProject = () => {
                     <h3 className={ styles.about__subtitle }>Дипломный проект включал 5 этапов</h3>
                     <p className={ styles.about__description }>Составление плана, работу над бэкендом, вёрстку, добавление функциональности и финальные доработки.</p>
                 </div>
-                
+
                 <div className={ styles.about__detail }>
                     <h3 className={ styles.about__subtitle }>На выполнение диплома ушло 5 недель</h3>
                     <p className={ styles.about__description }>У каждого этапа был мягкий и жёсткий дедлайн, которые нужно было соблюдать, чтобы успешно защититься.</p>
@@ -37,7 +37,7 @@ const AboutProject = () => {
                 </div>
             </div>
         </section>
-    );
-};
+    )
+}
 
-export default AboutProject;
+export default AboutProject

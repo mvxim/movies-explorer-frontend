@@ -45,6 +45,7 @@
     padding: 10px 20px;
     color: var(--white);
     background: transparent;
+    text-decoration: none;
     font-weight: 500;
     font-size: 12px;
     line-height: 16px;
@@ -68,25 +69,25 @@
         row-gap: 48px;
         padding: 140px 44px 76px;
     }
-    
+
     .promo__info {
         row-gap: 92px;
     }
-    
+
     .promo__text {
         align-items: center;
         text-align: center;
     }
-    
+
     .promo__title {
         font-size: 40px;
         line-height: 50px;
     }
-    
+
     .promo__info {
         align-items: center;
     }
-    
+
 }
 
 @media screen and (max-width: 767px) {
@@ -94,10 +95,12 @@
         row-gap: 44px;
         padding: 70px 10px 30px;
     }
+
     .promo__logo {
         width: 210px;
         height: 206px;
     }
+
     .promo__title {
         font-size: 30px;
         line-height: 38px;
