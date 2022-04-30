@@ -1,0 +1,39 @@
+.profileButton {
+    position: relative;
+    padding: 9px 36px 9px 11px;
+    background-color: var(--white);
+    border: none;
+    box-shadow: 0 3px 14px rgba(0, 0, 0, 0.08);
+    border-radius: 40px;
+    cursor: pointer;
+}
+
+.profileButton_type_desktop {
+    display: block;
+}
+
+.profileLink {
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 12px;
+    color: var(--black);
+    text-decoration: none;
+}
+
+.profileIcon {
+    position: absolute;
+    right: 3px;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 8px;
+    border-radius: 50%;
+    background-color: var(--input-bg-gray);
+    line-height: 0;
+}
+
+
+@media screen and (max-width: 1023px) {
+    .profileButton_type_desktop {
+        display: none;
+    }
+}

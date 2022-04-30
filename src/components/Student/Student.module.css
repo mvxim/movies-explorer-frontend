@@ -1,0 +1,154 @@
+.student {
+    padding: 110px 70px;
+}
+
+.student__title {
+    margin: 0 0 66px 0;
+}
+
+.student__bio {
+    display: flex;
+    justify-content: space-between;
+    column-gap: 32px;
+    margin: 0 0 99px 0;
+}
+
+.student__text {
+}
+
+.student__name {
+    margin: 0 0 18px 0;
+    font-weight: 400;
+    font-size: 50px;
+    line-height: 58px;
+    letter-spacing: -0.04em;
+}
+
+.student__status {
+    margin: 0 0 26px 0;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 20px;
+}
+
+.student__cv {
+    margin: 0 0 99px 0;
+    max-width: 600px;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 22px;
+}
+
+.student__links {
+    display: flex;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    column-gap: 20px;
+}
+
+.student__link {
+    color: inherit;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+}
+
+.student__photo {
+    display: block;
+    width: 270px;
+    height: 327px;
+    object-fit: cover;
+    object-position: center right;
+    border-radius: 10px;
+}
+
+
+@media screen and (max-width: 1023px) {
+    .student {
+        padding: 90px 50px;
+    }
+    
+    .student__name {
+        margin: 0 0 16px 0;
+        font-size: 40px;
+        line-height: 40px;
+    }
+    
+    .student__status {
+        margin: 0 0 20px 0;
+        font-size: 12px;
+        line-height: 18px;
+    }
+    
+    .student__cv {
+        margin: 0 0 87px 0;
+        font-size: 12px;
+        line-height: 18px;
+    }
+    
+    .student__photo {
+        width: 255px;
+        height: 307px;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .student {
+        padding: 70px 14px;
+    }
+    
+    .student__bio {
+        align-items: center;
+        flex-flow: column-reverse;
+        row-gap: 40px;
+    }
+    
+    .student__title {
+        margin: 0 0 60px 0;
+    }
+    
+    .student__name {
+        margin: 0 0 20px 0;
+        font-size: 30px;
+        line-height: 36px;
+    }
+    
+    .student__status {
+        font-size: 11px;
+        line-height: 16px;
+    }
+    
+    .student__cv {
+        margin: 0 0 40px 0;
+        font-size: 11px;
+        line-height: 16px;
+    }
+    
+    .student__links {
+        column-gap: 26px;
+    }
+    
+    .student__photo {
+        display: block;
+        width: 100%;
+        object-fit: cover;
+        object-position: center right;
+        border-radius: 10px;
+    }
+    
+    .student___portfolioTitle {
+        margin: 0 0 40px 0;
+    }
+    
+    .student__portfolio_link {
+        font-size: 18px;
+        line-height: 28px;
+    }
+    
+    .portfolio__arrow {
+        width: 18px;
+        height: 18px;
+    }
+}

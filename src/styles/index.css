@@ -1,0 +1,10 @@
+@import url("colors.css");
+@import url("../vendor/fonts/fonts.css");
+
+.linkAnimation {
+    transition: .2s all ease;
+}
+
+.linkAnimation:hover {
+    opacity: 0.7
+}

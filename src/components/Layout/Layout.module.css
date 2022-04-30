@@ -1,0 +1,10 @@
+.page {
+    box-sizing: border-box;
+    display: grid;
+    grid-template:
+        "header" min-content
+        "main" 1fr
+        "footer" min-content
+        / minmax(300px, auto);
+    min-height: 100vh;
+}

@@ -1,0 +1,17 @@
+.movies__header {
+    grid-area: header;
+    width: 100%;
+    flex-grow: 0;
+}
+
+.movies__main {
+    grid-area: main;
+    width: 100%;
+    flex-grow: 1;
+}
+
+.movies__footer {
+    grid-area: footer;
+    width: 100%;
+    flex-grow: 0;
+}
