@@ -5,11 +5,9 @@ import styles from './Menu.module.css';
 
 const Menu = () => (
     <section className={ styles.menu }>
+        <NavLinks />
         
-        <NavLinks/>
-        
-        <ProfileButton/>
-    
+        <ProfileButton />
     </section>
 );
 

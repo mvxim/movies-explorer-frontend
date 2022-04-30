@@ -1,3 +1,4 @@
+import classNames from 'classnames';
 import React from 'react';
 import mvx from '../../images/mvx.jpg';
 import SectionTitle from '../SectionTitle/SectionTitle';
@@ -20,17 +21,17 @@ export const Student = () => {
                     что разработка доставляет гораздо больше, и&nbsp;пошел учиться в&nbsp;Практикум. </p>
                 <ul className={ styles.student__links }>
                     <li>
-                        <a className={ styles.student__link }
+                        <a className={ classNames(styles.student__link, 'linkAnimation') }
                             href=""
                         >Telegram</a>
                     </li>
                     <li>
-                        <a className={ styles.student__link }
+                        <a className={ classNames(styles.student__link, 'linkAnimation') }
                             href=""
                         >Github</a>
                     </li>
                     <li>
-                        <a className={ styles.student__link }
+                        <a className={ classNames(styles.student__link, 'linkAnimation') }
                             href=""
                         >Instagram</a>
                     </li>
