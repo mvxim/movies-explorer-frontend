@@ -10,18 +10,18 @@ const SavedMovies = () => {
     return (
         <>
             <header className={ styles.savedMovies__header }>
-                <Header/>
+                <Header />
             </header>
             <main className={ styles.savedMovies__main }>
-                <SearchForm/>
-                <MoviesCardList>
-                    <MovieCard isSaved/>
-                    <MovieCard isSaved/>
-                    <MovieCard isSaved/>
+                <SearchForm />
+                <MoviesCardList isSaved>
+                    <MovieCard isSaved />
+                    <MovieCard isSaved />
+                    <MovieCard isSaved />
                 </MoviesCardList>
             </main>
             <footer className={ styles.savedMovies__footer }>
-                <Footer/>
+                <Footer />
             </footer>
         </>
     );

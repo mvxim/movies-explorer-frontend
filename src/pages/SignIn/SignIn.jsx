@@ -7,9 +7,11 @@ const SignIn = () => {
     return (
         <>
             <main className={ styles.signIn__main }>
-                <Logo className={ styles.signIn__logo }/>
-                <h2 className={ styles.signIn__greeting }>Рады видеть!</h2>
-                <SignInForm/>
+                <section className={ styles.signIn__wrapper }>
+                    <Logo className={ styles.signIn__logo } />
+                    <h2 className={ styles.signIn__greeting }>Рады видеть!</h2>
+                    <SignInForm />
+                </section>
             </main>
         </>
     );

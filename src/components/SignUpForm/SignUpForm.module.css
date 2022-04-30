@@ -36,6 +36,10 @@
     border-radius: 8px;
 }
 
+.signUpForm__input:focus {
+    box-shadow: 0 0 40px #c1c1c1;
+}
+
 .signUpForm__input_error {
     color: var(--accent-red)
 }

@@ -5,6 +5,6 @@
         "header" min-content
         "main" 1fr
         "footer" min-content
-        / minmax(320px, auto);
+        / minmax(300px, auto);
     min-height: 100vh;
 }

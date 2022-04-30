@@ -16,6 +16,7 @@ const SignUpForm = () => {
                         <input className={ styles.signUpForm__input }
                             type="text"
                             name="name"
+                            placeholder="Максим"
                             required
                         />
                         <span className={ styles.signUpForm__error }>Тут будет текст ошибки</span>
@@ -25,6 +26,7 @@ const SignUpForm = () => {
                         <input className={ styles.signUpForm__input }
                             type="email"
                             name="email"
+                            placeholder="email@domain.zone"
                             required
                         />
                         <span className={ styles.signUpForm__error }>Тут будет текст ошибки</span>
@@ -35,6 +37,7 @@ const SignUpForm = () => {
                         <input className={ styles.signUpForm__input }
                             type="password"
                             name="password"
+                            placeholder="Hard_2_Hack_Password!"
                             minLength="4"
                             maxLength="32"
                             required
@@ -47,9 +50,13 @@ const SignUpForm = () => {
                 >
                     Войти
                 </button>
-                <span className={ styles.signUpForm__buttonWrapper }>Еще не зарегистрированы? <Link to={ paths.signUp }
-                    className={ styles.signUpForm__link }
-                >Регистрация</Link></span>
+                <span className={ styles.signUpForm__buttonWrapper }>
+                    Уже зарегистрировались?
+                    <Link to={ paths.signIn }
+                        className={ styles.signUpForm__link }
+                    > Войти
+                    </Link>
+                </span>
             </form>
         </>
     );

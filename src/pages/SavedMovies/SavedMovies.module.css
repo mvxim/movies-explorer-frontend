@@ -8,6 +8,7 @@
     grid-area: main;
     width: 100%;
     flex-grow: 1;
+    padding-bottom: 50px;
 }
 
 .savedMovies__footer {
