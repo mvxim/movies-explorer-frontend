@@ -1,4 +1,3 @@
-import classNames from 'classnames'
 import React from 'react'
 import SectionTitle from '../SectionTitle/SectionTitle'
 import styles from './AboutProject.module.css'

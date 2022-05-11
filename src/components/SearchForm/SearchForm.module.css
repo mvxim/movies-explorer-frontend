@@ -18,7 +18,7 @@
     padding: 0;
     width: 100%;
     border: none;
-    outline:none;
+    outline: none;
     font-weight: 500;
     font-size: 28px;
     line-height: 34px;
@@ -48,13 +48,13 @@
     .search {
         padding: 80px 60px 30px;
         align-items: flex-end;
-    
+        
     }
 }
 
 @media screen and (max-width: 767px) {
     .search {
-        padding: 90px 51px 14px;
+        padding: 90px 14px 51px;
         align-items: center;
         
     }
@@ -64,5 +64,5 @@
         line-height: 22px;
     }
     
-
+    
 }

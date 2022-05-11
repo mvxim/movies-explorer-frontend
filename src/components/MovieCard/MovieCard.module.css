@@ -4,6 +4,7 @@
 .card__image {
     display: block;
     width: 100%;
+    height: 151px;
     object-fit: cover;
     object-position: center center;
 }
@@ -34,8 +35,8 @@
     display: none;
 }
 
-.card__buttonIcon_type_save {
-
+.card__card:hover .card__buttonIcon_type_save {
+    color: var(--accent-red);
 }
 
 .card__card:hover .card__buttonIcon_type_delete {
@@ -55,4 +56,16 @@
     font-size: 11px;
     line-height: 13px;
     color: var(--text-gray)
+}
+
+@media screen and (max-width: 1023px) {
+    .card__image {
+        height: 190px;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .card__image {
+        height: 168px;
+    }
 }

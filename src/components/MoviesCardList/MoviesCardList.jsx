@@ -1,32 +1,33 @@
-import classNames from 'classnames';
-import React, { useEffect, useState } from 'react';
-import Preloader from '../Preloader/Preloader';
-import styles from './MoviesCardList.module.css';
+import classNames from 'classnames'
+import React from 'react'
+import { MovieCard } from '../MovieCard/MovieCard'
+import Preloader from '../Preloader/Preloader'
+import styles from './MoviesCardList.module.css'
 
-export const MoviesCardList = ({ isSaved, children }) => {
-    
-    const [ isLoading, setIsloading ] = useState(true);
-    
-    useEffect(() => {
-        setTimeout(() => {
-            setIsloading(false);
-        }, 5000);
-    }, []);
-    
+export const MoviesCardList = ( { isSaved, isLoading, moviesList } ) => {
+
     return (
-        isLoading ? (
-                <Preloader />
-            )
+        isLoading
+            ? <Preloader />
             : (
                 <>
                     <ul className={ styles.cardList }>
-                        { children }
+                        {
+                            moviesList && moviesList.map( ( movie ) => (
+                                <MovieCard key={ movie.id }
+                                    movie={ movie }
+                                />
+                            ) )
+                        }
                     </ul>
-                    { !isSaved && (<div className={ styles.cardList__more }>
-                        <button className={ classNames(styles.cardList__moreButton, 'linkAnimation') }>Ещё</button>
-                    </div>) }
+
+                    { !isSaved && moviesList.length > 3 && (
+                        <div className={ styles.cardList__more }>
+                            <button className={ classNames( styles.cardList__moreButton, 'linkAnimation' ) }>Ещё</button>
+                        </div>
+                    ) }
                 </>
             )
-    
-    );
-};
+
+    )
+}
