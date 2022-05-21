@@ -1,6 +1,11 @@
 .card__card {
 }
 
+.card__link {
+    display: block;
+    cursor: pointer;
+}
+
 .card__image {
     display: block;
     width: 100%;

@@ -19,7 +19,6 @@ const useToast = () => {
     };
     
     const generateError = (details) => {
-        console.log('Generating error toast → ', details);
         setToasts((prevState) => {
             return [ ...prevState, {
                 id: generateRandomInternalId(),

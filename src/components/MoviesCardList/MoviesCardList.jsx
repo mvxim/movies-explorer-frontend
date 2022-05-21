@@ -1,26 +1,20 @@
 import classNames from 'classnames';
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useCountMoviesInARow } from '../../hooks/useCountMoviesInARow';
 import { useGlobal } from '../../hooks/useGlobal';
-import { DEFAULT_MOVIE_DATA, IMAGE_SRC_URL } from '../../utils/constants';
+import { DEFAULT_MOVIE_DATA, IMAGE_SRC_URL, MOVIES_IN_A_ROW_BY_DEFAULT, ROWS_TO_DISPLAY_BY_DEFAULT } from '../../utils/constants';
 import { MovieCard } from '../MovieCard/MovieCard';
 import styles from './MoviesCardList.module.css';
 
 export const MoviesCardList = ({
     isOnSavedMoviesPage,
     moviesList,
-    totalMoviesList
 }) => {
     
     const {
         saveMovie,
         removeSavedMovie
     } = useGlobal();
-    
-    const cardList = useRef(null);
-    
-    const [ capacityOfOneRow, setCapacityOfOneRow ] = useState(0);
-    
     
     const handleMovieSave = (movie) => {
         const movieData = {
@@ -41,16 +35,53 @@ export const MoviesCardList = ({
     
     const handleSavedMovieRemove = async (movie) => {
         await removeSavedMovie(movie, isOnSavedMoviesPage);
-        
     };
     
-    useCountMoviesInARow(cardList, setCapacityOfOneRow);
+    // ——————————————————————————————————————————————————DISPLAYED MOVIES LIST ———————————————————————————————————————————————————
+    const cardList = useRef();
+    const card = useRef();
+    
+    const [ capacityOfOneRow, setCapacityOfOneRow ] = useState(0);
+    const [ initialMoviesToDisplay, setInitialMoviesToDisplay ] = useState(0);
+    const [ displayedMoviesList, setDisplayedMoviesList ] = useState(moviesList);
+    const [ moviesToLoad, setMoviesToLoad ] = useState(capacityOfOneRow);
+    
+    useCountMoviesInARow(cardList, card, setCapacityOfOneRow);
+    
+    const displayMoreMovies = () => {
+        setMoviesToLoad(prevState => prevState + capacityOfOneRow);
+    };
+    
+    useEffect(() => {
+        if (capacityOfOneRow >= MOVIES_IN_A_ROW_BY_DEFAULT.DESKTOP) {
+            setInitialMoviesToDisplay(capacityOfOneRow * ROWS_TO_DISPLAY_BY_DEFAULT.DESKTOP);
+        } else if (capacityOfOneRow < MOVIES_IN_A_ROW_BY_DEFAULT.DESKTOP
+            && capacityOfOneRow >= MOVIES_IN_A_ROW_BY_DEFAULT.TABLET) {
+            setInitialMoviesToDisplay(capacityOfOneRow * ROWS_TO_DISPLAY_BY_DEFAULT.TABLET);
+        } else if (capacityOfOneRow < MOVIES_IN_A_ROW_BY_DEFAULT.TABLET
+            && capacityOfOneRow > 0) {
+            setInitialMoviesToDisplay(capacityOfOneRow * ROWS_TO_DISPLAY_BY_DEFAULT.MOBILE);
+        }
+    }, [ capacityOfOneRow ]);
+    
+    useEffect(() => {
+        if (capacityOfOneRow < MOVIES_IN_A_ROW_BY_DEFAULT.TABLET
+            && capacityOfOneRow >= 1) {
+            setDisplayedMoviesList(moviesList.slice(0, initialMoviesToDisplay + moviesToLoad * 2));
+        } else {
+            setDisplayedMoviesList(moviesList.slice(0, initialMoviesToDisplay + moviesToLoad));
+        }
+    }, [ moviesList, moviesToLoad, initialMoviesToDisplay ]);
+    
     
     const shouldRenderMoreButton = () => {
-        if (moviesList.length < totalMoviesList.length && moviesList.length > 3) {
+        if (displayedMoviesList.length < moviesList.length && displayedMoviesList.length > 3) {
             return (
                 <div className={ styles.cardList__more }>
-                    <button className={ classNames(styles.cardList__moreButton, 'linkAnimation') }>Ещё</button>
+                    <button className={ classNames(styles.cardList__moreButton, 'linkAnimation') }
+                        onClick={ displayMoreMovies }
+                    >Ещё
+                    </button>
                 </div>
             );
         }
@@ -62,8 +93,9 @@ export const MoviesCardList = ({
                 ref={ cardList }
             >
                 {
-                    moviesList && moviesList.map((movie) => (
+                    displayedMoviesList && displayedMoviesList.map((movie) => (
                         <MovieCard key={ movie.id || movie._id }
+                            ref={ card }
                             onSaveAction={ handleMovieSave }
                             onRemoveAction={ handleSavedMovieRemove }
                             movie={ movie }

@@ -10,11 +10,13 @@ export const SearchForm = ({
     isLoading,
     isDisabled,
     onSearchFormSubmit,
+    isOnSavedMoviesPage
 }) => {
     
     const {
         values,
         setValues,
+        isValid,
         handleChange,
     } = useForm();
     
@@ -55,11 +57,11 @@ export const SearchForm = ({
                         'Начните писать название фильма 🎥' }
                     onChange={ handleSearchInputChange }
                     disabled={ isLoading || isDisabled }
-                    // required={ !isOnSavedMoviesPage }
+                    required={ !isOnSavedMoviesPage }
                 />
                 <button className={ styles.search__button }
                     type="submit"
-                    // disabled={ isLoading || isDisabled || !isValid }
+                    disabled={ isLoading || isDisabled || !isValid }
                 >
                     <SearchIcon className={ styles.search__icon } />
                 </button>

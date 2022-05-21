@@ -8,11 +8,18 @@ const useForm = () => {
     const handleChange = (event) => {
         const name = event.target.name;
         const value = event.target.value;
+        if (name === 'name') {
+            setValues({
+                ...values,
+                [name]: value.replace(/[^а-яА-ЯёЁa-zA-Z -]/gi, '')
+            });
+        } else {
+            setValues({
+                ...values,
+                [name]: value,
+            });
+        }
         
-        setValues({
-            ...values,
-            [name]: value,
-        });
         
         setErrorMessages({
             ...errorMessages,

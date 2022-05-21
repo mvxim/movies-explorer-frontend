@@ -64,7 +64,7 @@ function App() {
             const justSavedMovie = await mainApiInstance.saveMovie(movie);
             if (justSavedMovie) {
                 generateNotification(TOOLTIP_MESSAGE.MOVIE_SAVE_SUCCESS,
-                    `«${ movie.nameRU }» можно найти на странице «Сохраненные фильмы»`);
+                    `«${ movie.nameRU }» теперь можно найти на странице «Сохраненные фильмы»`);
                 setSavedMovies(prevState => [ ...prevState, justSavedMovie ]);
             }
         } catch (error) {
@@ -108,8 +108,10 @@ function App() {
             setIsLoading(true);
             const updatedInfo = await mainApiInstance.updateUserInfo(values);
             if (updatedInfo) {
-                generateNotification(TOOLTIP_MESSAGE.USER_INFO_UPDATE_SUCCESS);
-                return updatedInfo;
+                generateNotification(TOOLTIP_MESSAGE.USER_INFO_UPDATE_SUCCESS,
+                    `Новое имя: ${ updatedInfo.name },\n новая почта: ${ updatedInfo.email }`
+                );
+                setCurrentUser(updatedInfo);
             }
         } catch (error) {
             setIsLoading(false);
@@ -120,14 +122,17 @@ function App() {
     };
     
     useEffect(() => {
-        async function fetch() {
-            const justSavedMovies = await fetchSavedMovies();
-            if (justSavedMovies.length) {
-                setSavedMovies(justSavedMovies);
+        if (isLoggedIn) {
+            async function fetch() {
+                const justSavedMovies = await fetchSavedMovies();
+                if (justSavedMovies.length) {
+                    setSavedMovies(justSavedMovies);
+                }
             }
+            
+            fetch();
         }
         
-        fetch();
     }, []);
     
     //————————————————————————————————————————————————————AUTH————————————————————————————————————————————————————————————————————
@@ -135,10 +140,24 @@ function App() {
         try {
             setIsLoading(true);
             const registerStatus = await authApiInstance.register(values);
+            console.log(values);
             if (registerStatus) {
-                generateNotification(TOOLTIP_MESSAGE.SIGN_UP_SUCCESS, '');
+                generateNotification(TOOLTIP_MESSAGE.SIGN_UP_SUCCESS, `Добро пожаловать, ${ values.name } 👋`);
+                const {
+                    email,
+                    password
+                } = values;
+                const authStatus = await authApiInstance.login({
+                    email,
+                    password
+                });
+                if (authStatus) {
+                    setIsLoggedIn(true);
+                    navigate(PATHS.MOVIES);
+                }
             }
         } catch (error) {
+            setIsLoggedIn(false);
             setIsLoading(false);
             handleError(error);
         } finally {
@@ -164,6 +183,19 @@ function App() {
         }
     };
     
+    const handleLogout = async () => {
+        try {
+            const isLoggedOut = await authApiInstance.logout();
+            if (isLoggedOut) {
+                setIsLoggedIn(false);
+                generateNotification(TOOLTIP_MESSAGE.SIGN_OUT_SUCCESS, '');
+                navigate(PATHS.MAIN);
+            }
+        } catch (error) {
+            handleError(error);
+        }
+    };
+    
     const checkLocation = () => {
         if (isLoggedIn) {
             if (location.pathname === PATHS.SIGN_IN
@@ -180,6 +212,7 @@ function App() {
             if (response) {
                 setCurrentUser(response);
                 setIsLoggedIn(true);
+                checkLocation();
                 setItemToStorage(LOCAL_STORAGE_KEYS.CURRENT_USER, response);
                 setItemToStorage(LOCAL_STORAGE_KEYS.AUTH, isLoggedIn);
             }
@@ -228,7 +261,8 @@ function App() {
         handleRegistration,
         currentUser,
         fetchUserInfo,
-        handleUpdateUserInfo
+        handleUpdateUserInfo,
+        handleLogout
     };
     
     const routing = useRoutes(routerConfig({

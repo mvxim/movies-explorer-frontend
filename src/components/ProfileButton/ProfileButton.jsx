@@ -18,10 +18,11 @@ export const ProfileButton = ({ isMobile }) => {
                 to={ PATHS.PROFILE }
             >
                 Аккаунт
-            </Link>
-            <span className={ styles.profileIcon }>
+                <span className={ styles.profileIcon }>
                 <ProfileIcon />
             </span>
+            </Link>
+        
         </button>
     );
 };

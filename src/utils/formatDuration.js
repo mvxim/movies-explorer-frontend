@@ -13,7 +13,7 @@ const getFormattedDuration = (duration) => {
         hoursWithPostfix = `${ hours } часов`;
     }
     
-    if (minutes % 10 === 1) {
+    if (minutes % 10 === 1 && minutes !== 11) {
         minutesWithPostfix = `${ minutes } минута`;
     } else if (minutes % 10 >= 2 && minutes % 10 <= 4 && minutes < 10) {
         minutesWithPostfix = `${ minutes } минуты`;
