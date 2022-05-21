@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import React from 'react';
+import React, { forwardRef } from 'react';
 import Delete from '../../components-svg/Delete';
 import Save from '../../components-svg/Save';
 import { useGlobal } from '../../hooks/useGlobal';
@@ -7,12 +7,13 @@ import { IMAGE_SRC_URL } from '../../utils/constants';
 import getFormattedDuration from '../../utils/formatDuration';
 import styles from '../MovieCard/MovieCard.module.css';
 
-export const MovieCard = ({
+
+export const MovieCard = forwardRef(({
     isOnSavedMoviesPage,
     movie,
     onSaveAction,
     onRemoveAction
-}) => {
+}, ref) => {
     
     const { savedMovies } = useGlobal();
     const isSaved = savedMovies.some(savedMovie => savedMovie.movieId === movie.id);
@@ -41,13 +42,20 @@ export const MovieCard = ({
     const assembleImageUrl = () => {
         return isOnSavedMoviesPage ? movie.image : `${ IMAGE_SRC_URL + movie.image.url }`;
     };
-    
     return (
-        <li className={ styles.card__card }>
-            <img className={ styles.card__image }
-                src={ assembleImageUrl() }
-                alt="Альт-текст для картинки"
-            />
+        <li className={ styles.card__card }
+            ref={ ref }
+        >
+            <a className={ styles.card__link }
+                href={ movie.trailerLink }
+                target={ '_blank' }
+            >
+                <img className={ styles.card__image }
+                    src={ assembleImageUrl() }
+                    alt="Альт-текст для картинки"
+                />
+            </a>
+            
             <div className={ styles.card__details }>
                 <p className={ styles.card__title }>{ movie.nameRU }</p>
                 
@@ -80,4 +88,4 @@ export const MovieCard = ({
             <p className={ styles.card__duration }>{ formatDuration(movie.duration) }</p>
         </li>
     );
-};
+});

@@ -1,11 +1,11 @@
 import { useEffect } from 'react';
 import { SCREEN_SIZES } from '../utils/constants';
 
-export const useCountMoviesInARow = (listElementRef, onCount) => {
+export const useCountMoviesInARow = (listElementRef, cardElementRef, onCount) => {
     const countMoviesInARow = () => {
-        if (listElementRef.current) {
+        if (listElementRef.current && cardElementRef.current) {
             const screenWidth = listElementRef?.current.offsetWidth;
-            const cardWidth = listElementRef?.current.children[0].offsetWidth;
+            const cardWidth = cardElementRef?.current.offsetWidth;
             
             let paddings;
             
@@ -19,10 +19,14 @@ export const useCountMoviesInARow = (listElementRef, onCount) => {
                 paddings = 20;
             }
             
-            const approxCapacityOfOneRow = Math.floor((screenWidth - paddings) / cardWidth) || 1;
+            const approxCapacityOfOneRow = Math.floor((screenWidth - paddings) / cardWidth) || 2;
             onCount(approxCapacityOfOneRow);
         }
     };
+    
+    useEffect(() => {
+        countMoviesInARow();
+    }, []);
     
     useEffect(() => {
         
@@ -38,5 +42,5 @@ export const useCountMoviesInARow = (listElementRef, onCount) => {
         
         handleResize();
         return () => window.removeEventListener('resize', handleResize);
-    }, [ countMoviesInARow, listElementRef ]);
+    }, [ countMoviesInARow, listElementRef, cardElementRef ]);
 };

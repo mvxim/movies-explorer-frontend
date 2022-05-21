@@ -1,4 +1,4 @@
-export const MAIN_BASE_URL = 'http://localhost:3000',
+export const MAIN_BASE_URL = 'https://api.mvxim.nomoredomains.work',
     MOVIES_BASE_URL = 'https://api.nomoreparties.co/beatfilm-movies',
     IMAGE_SRC_URL = 'https://api.nomoreparties.co',
     URL_SLUGS = {
@@ -6,7 +6,7 @@ export const MAIN_BASE_URL = 'http://localhost:3000',
         SAVED_MOVIES: '/movies',
         SIGN_IN: '/signin',
         SIGN_UP: '/signup',
-        SIGN_OUT: '/logout'
+        SIGN_OUT: '/signout'
     },
     SHORT_DURATION = 40,
     SCREEN_SIZES = {
@@ -14,6 +14,16 @@ export const MAIN_BASE_URL = 'http://localhost:3000',
         DESKTOP: 1024,
         TABLET: 768,
         MOBILE: 375,
+    },
+    MOVIES_IN_A_ROW_BY_DEFAULT = {
+        DESKTOP: 3,
+        TABLET: 2,
+        MOBILE: 1
+    },
+    ROWS_TO_DISPLAY_BY_DEFAULT = {
+        DESKTOP: 4,
+        TABLET: 4,
+        MOBILE: 5
     },
     LOCAL_STORAGE_KEYS = {
         ALL_MOVIES: 'allMovies',
@@ -26,7 +36,8 @@ export const MAIN_BASE_URL = 'http://localhost:3000',
     },
     TOOLTIP_MESSAGE = {
         SIGN_UP_SUCCESS: 'Регистрация успешна!',
-        SIGN_IN_SUCCESS: 'Рады видеть снова!',
+        SIGN_IN_SUCCESS: 'Рады видеть снова! 👋',
+        SIGN_OUT_SUCCESS: 'Увидимся 🥲',
         USER_INFO_UPDATE_SUCCESS: 'Данные пользователя обновлены',
         MOVIE_SAVE_SUCCESS: 'Фильм сохранен',
         MOVIE_REMOVE_SUCCESS: 'Фильм удален',
@@ -43,4 +54,5 @@ export const MAIN_BASE_URL = 'http://localhost:3000',
         UNKNOWN_IMAGE_URL: 'https://memepedia.ru/wp-content/uploads/2018/07/cover-3-1.jpg',
         UNKNOWN_TEXT_FIELD: 'Неизвестно',
         UNKNOWN_TRAILER_URL: 'https://youtube.com',
-    };
+    },
+    EMOJIS = [ '🔥', '💎', '💫', '✨', '❤️', '🖤', '⚡' ];
