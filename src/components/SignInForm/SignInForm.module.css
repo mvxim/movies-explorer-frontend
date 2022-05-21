@@ -68,7 +68,11 @@
     width: 100%;
     text-align: center;
     flex-grow: 0;
-    
+}
+
+.signInForm__button:disabled {
+    opacity: .5;
+    cursor: default;
 }
 
 .signInForm__buttonWrapper {

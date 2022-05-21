@@ -1,13 +1,15 @@
 import classNames from 'classnames';
 import React from 'react';
 import Header from '../../components/Header/Header';
+import { useAuth } from '../../hooks/useAuth';
 import styles from './Profile.module.css';
 
 const Profile = () => {
+    const { currentUser } = useAuth();
     return (
         <>
             <header className={ styles.profile__header }>
-                <Header/>
+                <Header />
             </header>
             <main className={ styles.profile__main }>
                 <form className={ styles.profile__form }>

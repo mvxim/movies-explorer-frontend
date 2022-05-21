@@ -68,7 +68,11 @@
     width: 100%;
     text-align: center;
     flex-grow: 0;
-    
+}
+
+.signUpForm__button:disabled {
+    opacity: .5;
+    cursor: default;
 }
 
 .signUpForm__buttonWrapper {

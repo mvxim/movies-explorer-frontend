@@ -1,0 +1,107 @@
+.toastList {
+    display: flex;
+    flex-direction: column;
+    row-gap: 18px;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    font-size: 14px;
+    box-sizing: border-box;
+    position: fixed;
+    top: 60px;
+    right: 12px;
+    transition: transform .6s ease-in-out;
+    animation: toast-in-right .4s;
+}
+
+.toast {
+    position: relative;
+    
+    width: 300px;
+    background-color: var(--white);
+    padding: 15px 15px 10px;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: box-shadow .2s ease;
+    box-shadow: 0 0 20px var(--shadow);
+}
+
+/*.toast_type_error {*/
+/*    box-shadow: 0 0 40px var(--accent-red);*/
+/*}*/
+
+/*.toast_type_success {*/
+/*    box-shadow: 0 0 40px var(--accent-green);*/
+/*}*/
+
+.toast_type_error .title:before {
+    content: "";
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--accent-red);
+    box-shadow: 0 0 3px 1px var(--accent-red);
+    display: inline-block;
+}
+
+.toast_type_success .title:before {
+    content: "";
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--accent-green);
+    box-shadow: 0 0 3px 1px var(--accent-green);
+    display: inline-block;
+}
+
+.toast:hover {
+    box-shadow: 0 0 40px #969696;
+}
+
+.title {
+    display: flex;
+    align-items: center;
+    column-gap: 8px;
+    font-size: 14px;
+    line-height: 20px;
+    margin: 0 25px 5px 0;
+}
+
+.details {
+    font-size: 12px;
+    line-height: 16px;
+    margin: 0 10px 0 0;
+    padding: 0;
+}
+
+.closeIcon {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    width: 24px;
+    height: 24px;
+}
+
+@keyframes toast-in-right {
+    from {
+        transform: translateX(100%);
+        
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+
+@keyframes toast-in-left {
+    from {
+        transform: translateX(-100%);
+        
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+
+
+@media screen and (max-width: 767px) {
+}

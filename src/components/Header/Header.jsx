@@ -2,7 +2,7 @@ import classNames from 'classnames';
 import React, { useState } from 'react';
 import { useMatch } from 'react-router-dom';
 import Logo from '../../components-svg/Logo';
-import { paths } from '../../routes/paths';
+import { PATHS } from '../../routes/paths';
 import { Burger } from '../Burger/Burger';
 import { CustomLink } from '../CustomLink/CustomLink';
 import Menu from '../Menu/Menu';
@@ -19,15 +19,15 @@ const Header = () => {
             ? (
                 <section className={ classNames(styles.header, styles.header_gray) }>
                     <CustomLink className={ classNames(styles.header__logo, 'linkAnimation') }
-                        destination={ paths.main }
+                        destination={ PATHS.MAIN }
                     >
-                        <Logo/>
+                        <Logo />
                     </CustomLink>
                     <nav className={ styles.header__buttonWrapper }>
                         <button className={ classNames(styles.header__button,
                             styles.header__button_type_transparent, 'linkAnimation') }
                         >
-                            <CustomLink destination={ paths.signUp }
+                            <CustomLink destination={ PATHS.SIGN_UP }
                                 className={ styles.header__buttonLink }
                             >
                                 Регистрация
@@ -36,7 +36,7 @@ const Header = () => {
                         <button className={ classNames(styles.header__button,
                             styles.header__button_type_colored, 'linkAnimation') }
                         >
-                            <CustomLink destination={ paths.signIn }
+                            <CustomLink destination={ PATHS.SIGN_IN }
                                 className={ styles.header__buttonLink }
                             >
                                 Войти
@@ -48,9 +48,9 @@ const Header = () => {
             : (
                 <section className={ classNames(styles.header) }>
                     <CustomLink className={ classNames(styles.header__logo, 'linkAnimation') }
-                        destination={ paths.main }
+                        destination={ PATHS.MAIN }
                     >
-                        <Logo/>
+                        <Logo />
                     </CustomLink>
                     
                     <Menu isMobile={ false }

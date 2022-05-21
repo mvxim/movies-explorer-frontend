@@ -1,10 +1,14 @@
 import classNames from 'classnames';
 import React from 'react';
-import { paths } from '../../routes/paths';
+import { PATHS } from '../../routes/paths';
 import { CustomLink } from '../CustomLink/CustomLink';
 import styles from './NavLinks.module.css';
 
-export const NavLinks = ({ activeLink, defaultLink, isMobile }) => {
+export const NavLinks = ({
+    activeLink,
+    defaultLink,
+    isMobile
+}) => {
     
     
     const linkDefault = defaultLink || styles.navLinks__link;
@@ -23,7 +27,7 @@ export const NavLinks = ({ activeLink, defaultLink, isMobile }) => {
             ) }
             >
                 { isMobile && (<li>
-                    <CustomLink destination={ paths.main }
+                    <CustomLink destination={ PATHS.MAIN }
                         className={ classNames(linkDefault, 'linkAnimation') }
                         classNameActive={ linkActive }
                     >
@@ -31,7 +35,7 @@ export const NavLinks = ({ activeLink, defaultLink, isMobile }) => {
                     </CustomLink>
                 </li>) }
                 <li>
-                    <CustomLink destination={ paths.movies }
+                    <CustomLink destination={ PATHS.MOVIES }
                         className={ classNames(linkDefault, 'linkAnimation') }
                         classNameActive={ linkActive }
                     >
@@ -39,7 +43,7 @@ export const NavLinks = ({ activeLink, defaultLink, isMobile }) => {
                     </CustomLink>
                 </li>
                 <li>
-                    <CustomLink destination={ paths.savedMovies }
+                    <CustomLink destination={ PATHS.SAVED_MOVIES }
                         className={ classNames(linkDefault, 'linkAnimation') }
                         classNameActive={ linkActive }
                     >
