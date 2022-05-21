@@ -22,6 +22,19 @@
     font-weight: 500;
     font-size: 28px;
     line-height: 34px;
+    background-color: var(--white);
+}
+
+.search__input:disabled {
+    opacity: .5;
+}
+
+.search__input:disabled ~ .search__button {
+    cursor: default;
+}
+
+.search__input:disabled ~ .search__button > .search__icon:hover {
+    transform: none;
 }
 
 .search__input::placeholder {
@@ -34,6 +47,10 @@
     padding: 0;
     line-height: 0;
     cursor: pointer;
+}
+
+.search__button:disabled {
+    opacity: .5;
 }
 
 .search__icon {

@@ -18,24 +18,23 @@
 
 .movies__error {
     max-width: 600px;
-    padding: 70px 70px;
+    padding: 10px 70px 70px;
     font-size: 12px;
     line-height: 18px;
     margin: 0 auto;
     text-align: center;
     color: var(--accent-red);
-
 }
 
 @media screen and (max-width: 1023px) {
     .movies__error {
-        padding: 70px 30px;
+        padding: 10px 30px 70px;
     }
 }
 
 @media screen and (max-width: 767px) {
     .movies__error {
         max-width: 100%;
-        padding: 40px 10px;
+        padding: 10px 10px;
     }
 }

@@ -1,13 +1,18 @@
 import React from 'react';
 import { Navigate, Outlet } from 'react-router-dom';
 import { useAuth } from '../../hooks/useAuth';
-import { paths } from '../../routes/paths';
+import { PATHS } from '../../routes/paths';
 
 export const AuthProtector = () => {
-    const auth = useAuth(); // ← просто подключаюсь к контексту, в котором isLoggedIn: boolean
-    if (!auth) {
-        return <Navigate to={ paths.signIn }
-            replace/>;
+    const auth = useAuth();
+    if (!auth.isLoggedIn) {
+        return <Navigate to={ PATHS.MAIN }
+            replace
+        />;
+    } else {
+        return (
+            <Outlet />
+        );
     }
-    return <Outlet/>;
+    
 };

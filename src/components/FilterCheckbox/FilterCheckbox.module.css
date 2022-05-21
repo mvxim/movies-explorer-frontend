@@ -5,11 +5,21 @@
     cursor: pointer;
 }
 
+.checkbox_disabled {
+    opacity: .5;
+    cursor: default;
+}
+
 .checkbox__input {
     position: absolute;
     height: 1px;
     overflow: hidden;
     clip: rect(0 0 0 0);
+}
+
+.checkbox__input:disabled {
+    opacity: .5;
+    cursor: default;
 }
 
 .checkbox__switch {
@@ -35,11 +45,11 @@
     
 }
 
-.checkbox__input:checked + .checkbox__switch{
+.checkbox__input_active + .checkbox__switch {
     background-color: var(--accent-green);
 }
 
-.checkbox__input:checked + .checkbox__switch::after{
+.checkbox__input_active + .checkbox__switch::after {
     transform: translateX(16px);
 }
 

@@ -1,43 +1,73 @@
-import React from 'react'
-import FindIcon from '../../components-svg/FindIcon'
-import { FilterCheckbox } from '../FilterCheckbox/FilterCheckbox'
-import styles from './SearchForm.module.css'
+import React, { useEffect, useState } from 'react';
+import SearchIcon from '../../components-svg/FindIcon';
+import useForm from '../../hooks/useForm';
+import { FilterCheckbox } from '../FilterCheckbox/FilterCheckbox';
+import styles from './SearchForm.module.css';
 
-export const SearchForm = ( { isLoading, moviesList, onSearchInput, onSearchFormSubmit, isFiltering, onFilterInput } ) => {
-
-    const handleSearchInputChange = ( event ) => {
-        onSearchInput( event.target.value )
-    }
-
-    const handleSearchFormSubmit = ( event ) => {
-        event.preventDefault()
-        onSearchFormSubmit( event )
-        console.log( 'Submit. Log from SearchForm' )
-    }
-
-
+export const SearchForm = ({
+    savedQuery,
+    savedFilter,
+    isLoading,
+    isDisabled,
+    onSearchFormSubmit,
+}) => {
+    
+    const {
+        values,
+        setValues,
+        handleChange,
+    } = useForm();
+    
+    const [ isFiltering, setIsFiltering ] = useState(false);
+    
+    const handleSearchInputChange = (event) => {
+        handleChange(event);
+    };
+    
+    const handleSearchFormSubmit = (event) => {
+        event.preventDefault();
+        onSearchFormSubmit(values.search, isFiltering);
+    };
+    
+    useEffect(() => {
+        if (savedQuery) {
+            setValues({
+                ...values,
+                'search': savedQuery
+            });
+        }
+        
+        if (savedFilter) {
+            setIsFiltering(savedFilter);
+        }
+    }, [ savedQuery, savedFilter, setValues ]);
+    
     return (
         <section className={ styles.search }>
             <form className={ styles.search__form }
                 onSubmit={ handleSearchFormSubmit }
             >
                 <input className={ styles.search__input }
+                    name="search"
                     type="text"
-                    placeholder="Фильм"
+                    value={ values.search || '' }
+                    placeholder={ isDisabled && 'Нет сохраненных фильмов 😔' ||
+                        'Начните писать название фильма 🎥' }
                     onChange={ handleSearchInputChange }
-                    disabled={ isLoading }
+                    disabled={ isLoading || isDisabled }
+                    // required={ !isOnSavedMoviesPage }
                 />
                 <button className={ styles.search__button }
                     type="submit"
-                    disabled={ isLoading }
+                    // disabled={ isLoading || isDisabled || !isValid }
                 >
-                    <FindIcon className={ styles.search__icon } />
+                    <SearchIcon className={ styles.search__icon } />
                 </button>
             </form>
-            <FilterCheckbox isLoading={ isLoading }
-                onFilterInput={ onFilterInput }
+            <FilterCheckbox isDisabled={ isLoading || isDisabled }
+                onFilterInput={ setIsFiltering }
                 isFiltering={ isFiltering }
             />
         </section>
-    )
-}
+    );
+};

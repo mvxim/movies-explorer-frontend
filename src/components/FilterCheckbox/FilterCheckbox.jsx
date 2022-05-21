@@ -1,18 +1,32 @@
+import classNames from 'classnames';
 import React from 'react';
 import styles from './FilterCheckbox.module.css';
 
-export const FilterCheckbox = ({ isLoading, onFilterInput, isFiltering }) => {
+export const FilterCheckbox = ({
+    isDisabled,
+    onFilterInput,
+    isFiltering
+}) => {
+    
+    const handleFilter = (event) => {
+        onFilterInput(event.target.checked);
+    };
     return (
         
-        <label className={ styles.checkbox }
+        <label className={ classNames(styles.checkbox,
+            { [styles.checkbox_disabled]: isDisabled }
+        ) }
             htmlFor="saved"
         >
-            <input className={ styles.checkbox__input }
+            <input className={ classNames(
+                styles.checkbox__input,
+                { [styles.checkbox__input_active]: isFiltering }
+            ) }
                 type="checkbox"
                 id="saved"
                 value={ isFiltering }
-                onInput={ onFilterInput }
-                disabled={ isLoading }
+                onInput={ handleFilter }
+                disabled={ isDisabled }
             />
             <span className={ styles.checkbox__switch }></span>
             <p className={ styles.checkbox__text }>

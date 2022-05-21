@@ -1,44 +1,50 @@
-import { AuthProtector } from '../components/AuthProtector/AuthProtector'
+import { AuthProtector } from '../components/AuthProtector/AuthProtector';
 
-import Layout from '../components/Layout/Layout'
-import Error from '../pages/Error/Error'
-import Main from '../pages/Main/Main'
-import Movies from '../pages/Movies/Movies'
-import Profile from '../pages/Profile/Profile'
-import SavedMovies from '../pages/SavedMovies/SavedMovies'
-import SignIn from '../pages/SignIn/SignIn'
-import SignUp from '../pages/SignUp/SignUp'
-import { paths } from './paths'
 
-export const routerConfig = [
+import Layout from '../components/Layout/Layout';
+import { GlobalContext } from '../context/GlobalContext';
+import Error from '../pages/Error/Error';
+import Main from '../pages/Main/Main';
+import Movies from '../pages/Movies/Movies';
+import Profile from '../pages/Profile/Profile';
+import SavedMovies from '../pages/SavedMovies/SavedMovies';
+import SignIn from '../pages/SignIn/SignIn';
+import SignUp from '../pages/SignUp/SignUp';
+import { PATHS } from './paths';
+
+export const routerConfig = ({ globalContextPayload }) => [
     {
         element: <Layout />,
         children: [
             {
-                path: paths.main,
+                path: PATHS.MAIN,
                 element: <Main />,
             },
             {
-                path: paths.signIn,
+                path: PATHS.SIGN_IN,
                 element: <SignIn />,
             },
             {
-                path: paths.signUp,
+                path: PATHS.SIGN_UP,
                 element: <SignUp />,
             },
             {
-                element: <AuthProtector />,
+                element: (
+                    <GlobalContext.Provider value={ globalContextPayload }>
+                        <AuthProtector />
+                    </GlobalContext.Provider>
+                ),
                 children: [
                     {
-                        path: paths.movies,
+                        path: PATHS.MOVIES,
                         element: <Movies />,
                     },
                     {
-                        path: paths.savedMovies,
+                        path: PATHS.SAVED_MOVIES,
                         element: <SavedMovies />,
                     },
                     {
-                        path: paths.profile,
+                        path: PATHS.PROFILE,
                         element: <Profile />,
                     },
                 ],
@@ -49,4 +55,4 @@ export const routerConfig = [
             },
         ],
     },
-]
+];
