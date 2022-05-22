@@ -22,6 +22,7 @@ function App() {
     const [ isLoading, setIsLoading ] = useState(false);
     const {
         globalError,
+        setGlobalError,
         handleError
     } = UseGlobalError();
     const {
@@ -152,6 +153,7 @@ function App() {
                     password
                 });
                 if (authStatus) {
+                    setGlobalError('');
                     setIsLoggedIn(true);
                     navigate(PATHS.MOVIES);
                 }
@@ -170,6 +172,7 @@ function App() {
             setIsLoading(true);
             const authStatus = await authApiInstance.login(values);
             if (authStatus) {
+                setGlobalError('');
                 setIsLoggedIn(true);
                 generateNotification(TOOLTIP_MESSAGE.SIGN_IN_SUCCESS, '');
                 navigate(PATHS.MOVIES);
