@@ -24,7 +24,7 @@ const useToast = () => {
                 id: generateRandomInternalId(),
                 type: 'error',
                 title: 'Ошибка 😔',
-                details: details
+                details: details.message
             } ];
         });
     };
