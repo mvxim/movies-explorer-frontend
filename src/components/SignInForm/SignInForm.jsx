@@ -60,7 +60,7 @@ const SignInForm = () => {
                             value={ values.password || '' }
                             onChange={ handleChange }
                             placeholder="Крепкий пароль"
-                            minLength="4"
+                            minLength="6"
                             maxLength="32"
                             required
                         />
