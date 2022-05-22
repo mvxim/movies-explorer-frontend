@@ -24,4 +24,8 @@ const parseStorage = () => {
     return data;
 };
 
-export { getItemFromStorage, setItemToStorage, updateStorageInBulk, parseStorage };
+const cleanStorage = () => {
+    localStorage.clear();
+};
+
+export { getItemFromStorage, setItemToStorage, updateStorageInBulk, parseStorage, cleanStorage };

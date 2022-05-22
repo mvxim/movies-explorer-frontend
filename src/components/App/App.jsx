@@ -9,7 +9,7 @@ import authApiInstance from '../../utils/AuthApi';
 import { LOCAL_STORAGE_KEYS, TOOLTIP_MESSAGE } from '../../utils/constants';
 import mainApiInstance from '../../utils/MainApi';
 import moviesApiInstance from '../../utils/MoviesApi';
-import { getItemFromStorage, setItemToStorage } from '../../utils/useStorage';
+import { cleanStorage, getItemFromStorage, setItemToStorage } from '../../utils/useStorage';
 import { Tooltip } from '../Tooltip/Tooltip';
 import styles from './App.module.css';
 
@@ -188,6 +188,7 @@ function App() {
             const isLoggedOut = await authApiInstance.logout();
             if (isLoggedOut) {
                 setIsLoggedIn(false);
+                cleanStorage();
                 generateNotification(TOOLTIP_MESSAGE.SIGN_OUT_SUCCESS, '');
                 navigate(PATHS.MAIN);
             }
