@@ -36,6 +36,7 @@ const useGlobalError = () => {
     
     return {
         globalError,
+        setGlobalError,
         handleError
     };
     
