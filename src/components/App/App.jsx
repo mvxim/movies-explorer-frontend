@@ -50,8 +50,8 @@ function App() {
     const fetchSavedMovies = async () => {
         try {
             setIsLoading(true);
-            const savedMovies = await mainApiInstance.getSavedMovies();
-            if (savedMovies) return savedMovies;
+            const justFetchedSavedMovies = await mainApiInstance.getSavedMovies();
+            if (justFetchedSavedMovies) setSavedMovies(justFetchedSavedMovies);
         } catch (error) {
             setIsLoading(false);
             handleError(error);
