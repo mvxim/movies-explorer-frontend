@@ -52,7 +52,7 @@ export const Tooltip = ({
                     >
                         <CrossIcon className={ styles.closeIcon } />
                         <h3 className={ styles.title }>{ toast.title } </h3>
-                        <p className={ styles.details }>{ toast.details.message }</p>
+                        <p className={ styles.details }>{ toast.details }</p>
                     </li>
                 ) }
             </ul>
