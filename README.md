@@ -1,81 +1,73 @@
-# Getting Started with Create React App
+# movies-explorer-frontend
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Фронтенд дипломного проекта «Movies explorer» Яндекс Практикума. Одностраничное приложение, взаимодействующее с
+написанным на предыдущем этапе [бэкендом](https://github.com/mvxim/movies-explorer-api)
+и [открытым АПИ](https://api.nomoreparties.co/beatfilm-movies) фестиваля «Beat Film», любезно предоставленным Практикумом.
 
-## Available Scripts
+### ✏️ Описание
 
-In the project directory, you can run:
+Приложение, в котором можно найти фильмы по запросу и сохранить в личном кабинете.
+Пользователь вводит в строку поиска ключевые слова и нажимает кнопку «Искать». После этого приложение выполняет следующие
+действия:
 
-### `npm start`
+* отправляет запрос к сервису «Beat Film API» с данными о фильмах, получает данные и сохраняет;
+* согласно выбранному жанру ищет все подходящие фильмы и отображает карточки с ними;
+* когда пользователь сохраняет фильм, он попадает в раздел «Сохраненные фильмы» на отдельной странице;
+* среди сохраненных фильмов можно искать нужные по ключевому слову, жанру, и удалять ненужные;
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### 🧠 Структура и функционал
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Сайт состоит из нескольких страниц:
 
-### `npm test`
+* `/` — **главная страница**. Содержит информацию о выполненном проекте.
+* `/movies` — **страница с фильмами**. На ней есть форма поиска фильмов и блок с результатами поиска.
+* `/saved-movies` — **страница с сохранёнными фильмами.** Показывает фильмы, сохранённые пользователем.
+* `/signup` — **страница регистрации.** Позволяет пользователю зарегистрировать аккаунт.
+* `/signin` — **страница авторизации.** На ней пользователь может войти в систему.
+* `/profile` — **страница редактирования профиля.** Пользователь может изменить данные своего аккаунта.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### 🔥 Установка и запуск
 
-### `npm run build`
+🛠️ Чтобы запустить проект в режиме разработки, нужно:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1. Перейти в директорию, в которой нужно разместить проект:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+* ```mkdir %название папки% && cd %название папки%```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+2. Склонировать репозиторий в текущую папку:
 
-### `npm run eject`
+* ```git clone git@github.com:mvxim/movies-explorer-frontend.git ./```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+3. Установить зависимости:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the
-single build dependency from your project.
+* ```npm install```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your
-project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied
-scripts so you can tweak them. At this point you're on your own.
+4. Запустить проект в режиме разработки:
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel
-obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are
-ready for it.
+* ```npm run start```
 
-## Learn More
+💅 Чтобы получить готовую сборку:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+* ```npm run build```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### ⚙️ Стек
 
-### Code Splitting
+* HTML5, CSS3;
+* JavaScript ES6+;
+* React v.18.1;
+* Create React App v.5.0.0
+* React-router v.6.3;
+* [Classnames](https://www.npmjs.com/package/classnames) v.2.3.1;
+* [Normalize.css](https://www.npmjs.com/package/normalize.css) v.8.0.1;
 
-This section has moved
-here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### 🔗 Ссылки
 
-### Analyzing the Bundle Size
-
-This section has moved
-here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved
-here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved
-here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved
-here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved
-here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+* Деплой фронтенд-приложения на Яндекс.Облаке: [https://mvxim.nomoredomains.work/](https://mvxim.nomoredomains.work/)
+* Деплой бэкенда там же: [https://api.mvxim.nomoredomains.work/](https://api.mvxim.nomoredomains.work/)
+* Репозиторий с бэкендом с предыдущего этапа дипломной
+  работы: [https://github.com/mvxim/movies-explorer-api](https://github.com/mvxim/movies-explorer-api)
+* Открытый АПИ фестиваля «Beat Film»: [https://api.nomoreparties.co/beatfilm-movies](https://api.nomoreparties.co/beatfilm-movies)
+* Макет
+  фронтенда: [https://www.figma.com/file/IVFVVpl3Pyaenhi9OQPVWK/Donika's-diploma](https://www.figma.com/file/IVFVVpl3Pyaenhi9OQPVWK/Donika's-diploma)
+  ; изначально по ссылке откроется конструктор дипломных работ, страница `SOURCE`. Чтобы посмотреть макет, нужно в Фигме выбрать
+  страницу `RESULT`.
