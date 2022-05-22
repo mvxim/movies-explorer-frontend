@@ -21,7 +21,8 @@ const Movies = () => {
     const {
         fetchAllMovies,
         isLoading,
-        globalError
+        globalError,
+        handleError
     } = useGlobal();
     
     let allMovies = getItemFromStorage(LOCAL_STORAGE_KEYS.ALL_MOVIES);
@@ -40,20 +41,25 @@ const Movies = () => {
     }, []);
     
     const handleSearchFormSubmit = async (query, isFiltering) => {
-        if (!allMovies) {
-            allMovies = await fetchAllMovies();
-            if (allMovies) {
-                setItemToStorage(LOCAL_STORAGE_KEYS.ALL_MOVIES, allMovies);
+        try {
+            if (!allMovies) {
+                allMovies = await fetchAllMovies();
+                if (allMovies) {
+                    setItemToStorage(LOCAL_STORAGE_KEYS.ALL_MOVIES, allMovies);
+                }
             }
+            
+            if (allMovies) {
+                allMovies = getItemFromStorage(LOCAL_STORAGE_KEYS.ALL_MOVIES);
+                setFetchedMovies(allMovies);
+                const filtrationResult = filterMovies(allMovies, query || '', isFiltering);
+                updateStorageInBulk(allMovies, filtrationResult, query, isFiltering);
+                setFilteredMovies(filtrationResult);
+            }
+        } catch (error) {
+            handleError(error);
         }
         
-        if (allMovies) {
-            allMovies = getItemFromStorage(LOCAL_STORAGE_KEYS.ALL_MOVIES);
-            setFetchedMovies(allMovies);
-            const filtrationResult = filterMovies(allMovies, query || '', isFiltering);
-            updateStorageInBulk(allMovies, filtrationResult, query, isFiltering);
-            setFilteredMovies(filtrationResult);
-        }
     };
     
     
@@ -79,7 +85,6 @@ const Movies = () => {
         }
     };
     
-    
     return (
         <>
             <header className={ styles.movies__header }>
@@ -92,9 +97,9 @@ const Movies = () => {
                     isLoading={ isLoading }
                     onSearchFormSubmit={ handleSearchFormSubmit }
                 />
-                { globalError && !allMovies && (
+                { globalError.code === 500 && (
                     <p className={ styles.movies__error }>
-                        { globalError }
+                        { globalError.message }
                     </p>)
                 }
                 { isLoading ? <Preloader /> : renderMoviesSection() }

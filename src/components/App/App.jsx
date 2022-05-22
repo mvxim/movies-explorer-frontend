@@ -123,16 +123,19 @@ function App() {
     };
     
     useEffect(() => {
-        if (isLoggedIn) {
-            async function fetch() {
-                const justSavedMovies = await fetchSavedMovies();
-                if (justSavedMovies.length) {
-                    setSavedMovies(justSavedMovies);
+        try {
+            if (isLoggedIn) {
+                async function fetch() {
+                    await fetchSavedMovies();
+                    
                 }
+                
+                fetch();
             }
-            
-            fetch();
+        } catch (error) {
+            handleError(error);
         }
+        
         
     }, []);
     
@@ -241,7 +244,7 @@ function App() {
     
     // ——————————————————————————————————————————————————TOASTS & ERRORS——————————————————————————————————————————————————————————
     useEffect(() => {
-        if (globalError) {
+        if (globalError.code) {
             generateError(globalError);
         }
     }, [ globalError ]);
@@ -257,6 +260,7 @@ function App() {
         fetchSavedMovies,
         saveMovie,
         removeSavedMovie,
+        handleError
     };
     
     const authContextPayload = {
