@@ -16,7 +16,6 @@ export const SearchForm = ({
     const {
         values,
         setValues,
-        isValid,
         handleChange,
     } = useForm();
     
@@ -61,7 +60,7 @@ export const SearchForm = ({
                 />
                 <button className={ styles.search__button }
                     type="submit"
-                    disabled={ isLoading || isDisabled || !isValid }
+                    disabled={ isLoading || isDisabled }
                 >
                     <SearchIcon className={ styles.search__icon } />
                 </button>
