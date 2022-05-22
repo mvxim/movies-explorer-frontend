@@ -1,1 +1,0 @@
-# MOVIES-explorer-frontend

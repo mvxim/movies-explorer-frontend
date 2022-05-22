@@ -1,5 +1,15 @@
 {
     "name": "movies-explorer-frontend",
+    "author": {
+        "name": "Maxim Donika",
+        "email": "donika.maxim@gmail.com",
+        "url": "https://github.com/mvxim"
+    },
+    
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/mvxim/movies-explorer-frontend"
+    },
     "version": "0.1.0",
     "private": true,
     "dependencies": {
