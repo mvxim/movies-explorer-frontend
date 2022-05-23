@@ -1,22 +1,42 @@
-import classNames from 'classnames';
-import React, { useState } from 'react';
-import { useMatch } from 'react-router-dom';
-import Logo from '../../components-svg/Logo';
-import { PATHS } from '../../routes/paths';
-import { Burger } from '../Burger/Burger';
-import { CustomLink } from '../CustomLink/CustomLink';
-import Menu from '../Menu/Menu';
-import { MenuButton } from '../MenuButton/MenuButton';
-import styles from './Header.module.css';
+import classNames from 'classnames'
+import React, { useState } from 'react'
+import Logo from '../../components-svg/Logo'
+import { useAuth } from '../../hooks/useAuth'
+import { PATHS } from '../../routes/paths'
+import { Burger } from '../Burger/Burger'
+import { CustomLink } from '../CustomLink/CustomLink'
+import LogoLink from '../LogoLink/LogoLink'
+import Menu from '../Menu/Menu'
+import { MenuButton } from '../MenuButton/MenuButton'
+import styles from './Header.module.css'
 
 const Header = () => {
     
-    const myPath = useMatch('*');
-    const [ isMenuActive, setIsMenuActive ] = useState(false);
+    const { isLoggedIn } = useAuth()
+    
+    const [ isMenuActive, setIsMenuActive ] = useState(false)
     
     return (
-        myPath.pathname === '/'
+        isLoggedIn
             ? (
+                <section className={ classNames(styles.header) }>
+                    <LogoLink className={ styles.header__logo } />
+                    
+                    <Menu isMobile={ false }
+                        menuStatus={ isMenuActive }
+                        onMenuToggle={ setIsMenuActive }
+                    />
+                    
+                    <Burger isActive={ isMenuActive }
+                        onBackdropClick={ setIsMenuActive }
+                    />
+                    
+                    <MenuButton menuStatus={ isMenuActive }
+                        onMenuToggle={ setIsMenuActive }
+                    />
+                </section>
+            )
+            : (
                 <section className={ classNames(styles.header, styles.header_gray) }>
                     <CustomLink className={ classNames(styles.header__logo, 'linkAnimation') }
                         destination={ PATHS.MAIN }
@@ -45,29 +65,7 @@ const Header = () => {
                     </nav>
                 </section>
             )
-            : (
-                <section className={ classNames(styles.header) }>
-                    <CustomLink className={ classNames(styles.header__logo, 'linkAnimation') }
-                        destination={ PATHS.MAIN }
-                    >
-                        <Logo />
-                    </CustomLink>
-                    
-                    <Menu isMobile={ false }
-                        menuStatus={ isMenuActive }
-                        onMenuToggle={ setIsMenuActive }
-                    />
-                    
-                    <Burger isActive={ isMenuActive }
-                        onBackdropClick={ setIsMenuActive }
-                    />
-                    
-                    <MenuButton menuStatus={ isMenuActive }
-                        onMenuToggle={ setIsMenuActive }
-                    />
-                </section>
-            )
-    );
-};
+    )
+}
 
-export default Header;
+export default Header

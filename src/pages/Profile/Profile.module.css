@@ -61,7 +61,7 @@
     width: 100%;
     height: 1px;
     background-color: var(--divider-gray);
-    margin: 17px 0;
+    margin: 5px 0 17px 0;
 }
 
 .profile__inputName {
@@ -88,6 +88,16 @@
     transition: font-weight .1s ease;
 }
 
+.profile__inputError {
+    display: block;
+    color: var(--accent-red);
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 12px;
+    text-align: right;
+    margin: 7px 0;
+}
+
 .profile__input:focus-within {
     font-weight: 900;
 }
@@ -110,6 +120,10 @@
     line-height: 16px;
     width: 100%;
     text-align: center;
+}
+
+.profile__button:disabled {
+    cursor: default;
 }
 
 .profile__button_type_edit {
