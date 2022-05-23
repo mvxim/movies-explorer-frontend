@@ -206,8 +206,7 @@ function App() {
     const checkLocation = () => {
         if (isLoggedIn) {
             if (location.pathname === PATHS.SIGN_IN
-                || location.pathname === PATHS.SIGN_UP
-                || location.pathname === PATHS.MAIN) {
+                || location.pathname === PATHS.SIGN_UP) {
                 navigate(PATHS.MOVIES);
             }
         }

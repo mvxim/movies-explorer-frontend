@@ -1,0 +1,9 @@
+.logoLink {
+    text-decoration: none;
+    line-height: 0;
+}
+
+.logoIcon {
+    flex-grow: 0;
+    
+}

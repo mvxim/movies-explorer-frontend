@@ -1,4 +1,4 @@
-export const MAIN_BASE_URL = 'https://api.mvxim.nomoredomains.work',
+export const MAIN_BASE_URL = 'http://localhost:3000',
     MOVIES_BASE_URL = 'https://api.nomoreparties.co/beatfilm-movies',
     IMAGE_SRC_URL = 'https://api.nomoreparties.co',
     URL_SLUGS = {
