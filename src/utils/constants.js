@@ -1,4 +1,4 @@
-export const MAIN_BASE_URL = 'http://localhost:3000',
+export const MAIN_BASE_URL = 'https://apimovies.dikiezveri.ru',
     MOVIES_BASE_URL = 'https://api.nomoreparties.co/beatfilm-movies',
     IMAGE_SRC_URL = 'https://api.nomoreparties.co',
     URL_SLUGS = {
@@ -6,7 +6,7 @@ export const MAIN_BASE_URL = 'http://localhost:3000',
         SAVED_MOVIES: '/movies',
         SIGN_IN: '/signin',
         SIGN_UP: '/signup',
-        SIGN_OUT: '/signout'
+        SIGN_OUT: '/signout',
     },
     SHORT_DURATION = 40,
     SCREEN_SIZES = {
@@ -18,12 +18,12 @@ export const MAIN_BASE_URL = 'http://localhost:3000',
     MOVIES_IN_A_ROW_BY_DEFAULT = {
         DESKTOP: 3,
         TABLET: 2,
-        MOBILE: 1
+        MOBILE: 1,
     },
     ROWS_TO_DISPLAY_BY_DEFAULT = {
         DESKTOP: 4,
         TABLET: 4,
-        MOBILE: 5
+        MOBILE: 5,
     },
     LOCAL_STORAGE_KEYS = {
         ALL_MOVIES: 'allMovies',
@@ -32,7 +32,7 @@ export const MAIN_BASE_URL = 'http://localhost:3000',
         QUERY: 'query',
         FILTER_FLAG_STATE: 'filterFlagState',
         CURRENT_USER: 'user',
-        AUTH: 'auth'
+        AUTH: 'auth',
     },
     TOOLTIP_MESSAGE = {
         SIGN_UP_SUCCESS: 'Регистрация успешна!',
@@ -48,11 +48,11 @@ export const MAIN_BASE_URL = 'http://localhost:3000',
         '403': 'Пытаетесь удалить чужой фильм, ай-яй-яй 😠',
         '404': 'Фильма, с которым вы взаимодействуете, нет на сервере 😔',
         '409': 'Кто-то уже зарегистрировался на эту почту 🤨',
-        '500': 'На сервере произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз'
+        '500': 'На сервере произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз',
     },
     DEFAULT_MOVIE_DATA = {
         UNKNOWN_IMAGE_URL: 'https://memepedia.ru/wp-content/uploads/2018/07/cover-3-1.jpg',
         UNKNOWN_TEXT_FIELD: 'Неизвестно',
         UNKNOWN_TRAILER_URL: 'https://youtube.com',
     },
-    EMOJIS = [ '🔥', '💎', '💫', '✨', '❤️', '🖤', '⚡' ];
+    EMOJIS = ['🔥', '💎', '💫', '✨', '❤️', '🖤', '⚡'];
